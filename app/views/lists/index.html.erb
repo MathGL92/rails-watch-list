@@ -1,0 +1,11 @@
+<div class="container my-5">
+  <h1 class="my-3 text-center">My Lists</h1>
+  <p class="my-3">Here are my favorites lists of movies:</p>
+  <ul>
+    <% @lists.each do |list| %>
+      <li class="my-2"><%= link_to list.name, list_path(list) %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Create a list', list_new_path %>
+</div>
