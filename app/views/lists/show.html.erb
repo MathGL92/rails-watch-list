@@ -1,3 +1,13 @@
 <div class="container my-5">
   <h1 class="my-3 text-center"><%= @list.name %></h1>
+
+  <ul>
+    <% @movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by_movie_and_list(movie, list) %>
+
+      <li><%= movie.title %><%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Add a movie', new_list_bookmark_path(@list) %>
 </div>
